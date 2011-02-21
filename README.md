@@ -88,12 +88,12 @@ It can be used with the following templates:
      } else {
        $out = 'No found results.';
      }
-
-   //output the result
-   echo$out;
+     //output the result
+     echo$out;
    
 
    <!-- body.tpl.php -->
+
    <body>
    <div id="logo"><a href="#">Twitter</a></div>
    <form id="f" name="f">
