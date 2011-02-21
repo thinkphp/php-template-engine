@@ -128,7 +128,7 @@ class Template {
  * Usage
  */
  
- class Template_Cache extends Template {
+ class CachedTemplate extends Template {
  
        public $cache_id;
        public $expire;
@@ -146,8 +146,8 @@ class Template {
         */
 
         public function __construct($path, $path_cache_files='cache/', $cache_id=NULL, $expire=900) {
-               parent::_construct($path);
-               $this->cache_id = $cache_id ? $path_cache_file . md5($cache_id) : $cache_id;
+               parent::__construct($path);
+               $this->cache_id = $cache_id ? $path_cache_files . md5($cache_id) : $cache_id;
                $this->expire = $expire;
         }
 
@@ -182,7 +182,7 @@ class Template {
              //if cache has expired ? return false : return true;
              if(($mtime + $this->expire) < time()) {
 
-                 unlink($this->cache_id);
+                 @unlink($this->cache_id);
                 return false;
 
              /*
@@ -192,6 +192,7 @@ class Template {
               * twice as much (file_exists() filemtime() => twice each)     
               */
              } else {
+
                  $this->cached = true;
                 return true; 
              }
@@ -206,8 +207,9 @@ class Template {
          * @return String (template output). 
          */
 
-         public function fetch($file) {
-              if($this->is_cached()) {
+         public function fetch_cache($file) {
+
+              if($this->isCached()) {
 
                  $fp = @fopen($this->cache_id, 'r');
                  $contents = fread($fp, filesize($this->cache_id));
@@ -218,7 +220,7 @@ class Template {
 
                  $contents = $this->fetch($file);
                  //write to the cache
-                 if($fp=@fopen()) {
+                 if($fp=fopen($this->cache_id,"w")) {
                     fwrite($fp, $contents);
                     fclose($fp); 
                  } else {
@@ -227,6 +229,11 @@ class Template {
 
                 return $contents;
               }
-         }       
+         }    
+
+         public function display_cache($file) {
+
+              echo$this->fetch_cache($file); 
+         }
  }//end class Template_Cache
 ?>
