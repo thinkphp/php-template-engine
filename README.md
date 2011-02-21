@@ -105,4 +105,5 @@ It can be used with the following templates:
    </html>
 
    <!-- footer.tpl.php -->
+
    <div id="ft"><p>Written by @<a href="http://twitter.com/thinkphp"><?php echo$written;?></a> | download on <a href="<?php echo$download;?>">GitHub</a></p></div>
