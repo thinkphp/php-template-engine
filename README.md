@@ -92,18 +92,18 @@ It can be used with the following templates:
      echo$out;
    
 
-   <!-- body.tpl.php -->
+     <!-- body.tpl.php -->
 
-   <body>
-   <div id="logo"><a href="#">Twitter</a></div>
-   <form id="f" name="f">
-      <label for="username"><?php echo$label;?></label><input type="text" id="username" name="username" value="<?php echo$_GET['username'];?>"/><input type="submit" value="Grab">
-   </form>  
-   <div id="content_tweets"><?php echo$tweets; ?></div>
-   <?php echo$footer;?>
-   </body>
-   </html>
+     <body>
+     <div id="logo"><a href="#">Twitter</a></div>
+     <form id="f" name="f">
+           <label for="username"><?php echo$label;?></label><input type="text" id="username" name="username" value="<?php echo$_GET['username'];?>"/><input type="submit" value="Grab">
+     </form>  
+     <div id="content_tweets"><?php echo$tweets; ?></div>
+     <?php echo$footer;?>
+     </body>
+     </html>
 
-   <!-- footer.tpl.php -->
+     <!-- footer.tpl.php -->
 
-   <div id="ft"><p>Written by @<a href="http://twitter.com/thinkphp"><?php echo$written;?></a> | download on <a href="<?php echo$download;?>">GitHub</a></p></div>
+     <div id="ft"><p>Written by @<a href="http://twitter.com/thinkphp"><?php echo$written;?></a> | download on <a href="<?php echo$download;?>">GitHub</a></p></div>
